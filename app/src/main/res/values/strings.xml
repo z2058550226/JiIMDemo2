@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">JiIMDemo2</string>
+    <string name="current_user">current user is : </string>
+</resources>
