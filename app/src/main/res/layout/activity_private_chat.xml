@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.suikajy.jiimdemo2.widget.ReSizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rsl"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
+    <com.suikajy.jiimdemo2.widget.ChatListView
         android:id="@+id/mRecyclerView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#fff"
-        app:layout_constraintBottom_toTopOf="@+id/layout_input"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_weight="1"
+        android:background="#f0f0f0" />
 
     <LinearLayout
         android:id="@+id/layout_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mRecyclerView">
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/mEtChatInput"
@@ -40,17 +34,51 @@
             android:layout_marginBottom="8dp"
             android:layout_marginRight="8dp"
             android:text="submit" />
+
+        <Button
+            android:id="@+id/mBtnPlus"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="+" />
+
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/layout_input_menu"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <!--<cn.jiguang.imui.chatinput.ChatInputView-->
-    <!--android:id="@+id/civ"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--app:layout_constraintRight_toRightOf="parent"-->
-    <!--app:layout_constraintTop_toBottomOf="@+id/layout_input" />-->
+        <TextView
+            android:id="@+id/btn_select_image"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="15dp"
+            android:layout_toLeftOf="@+id/btn_select_file"
+            android:background="@drawable/bg_stroke_button"
+            android:gravity="center"
+            android:text="发送图片" />
 
+        <TextView
+            android:id="@+id/btn_select_file"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="15dp"
+            android:background="@drawable/bg_stroke_button"
+            android:gravity="center"
+            android:text="发送文件" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/btn_record_voice"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="15dp"
+            android:background="@drawable/bg_stroke_button"
+            android:gravity="center"
+            android:text="按住录音" />
+    </LinearLayout>
+</com.suikajy.jiimdemo2.widget.ReSizeLayout>

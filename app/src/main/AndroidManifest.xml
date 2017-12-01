@@ -56,8 +56,8 @@
         <activity android:name=".module.login.LoginActivity" />
         <activity android:name=".module.conversationList.ConversationListActivity" />
         <activity android:name=".module.createSpecConversation.CreateSpecConversationActivity" />
-        <activity android:name=".module.viewTest.ViewTestActivity"
-            android:windowSoftInputMode="adjustUnspecified"/>
+        <activity android:name=".module.custom_private_chat.CustomChatActivity" />
+        <activity android:name=".TestActivity" />
 
         <!-- Required SDK 核心功能-->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
@@ -132,7 +132,7 @@
         <!-- Required. AppKey copied from Portal -->
         <meta-data
             android:name="JPUSH_APPKEY"
-            android:value="20742cec6c1da604c634898a" />
+            android:value="8d8014e479d70bc6dad3ee2c" />
     </application>
 
 </manifest>

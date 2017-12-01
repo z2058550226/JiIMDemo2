@@ -38,25 +38,27 @@ class ConversationListAdapter : BaseRecyclerAdapter<ConversationListAdapter.View
             targetInfo.userName
         } else throw IllegalArgumentException("会话目标不是单个用户，可能是群组会话")
         val latestMessage = conversation.latestMessage
-        val createTime = latestMessage.createTime
-        val content = latestMessage.content
-        holder!!.mTvTime.text = createTime.stamp2String(PATTERN_MOUNTH_DAY_HMS)
-        holder.mTvDestUserName.text = targetUserName
-        if (targetUserName != SampleUser.REIMU.userName) {
-            Glide.with(holder.mImgAvatar).load(R.mipmap.toy_pic).into(holder.mImgAvatar)
-        } else {
-            Glide.with(holder.mImgAvatar).load(R.mipmap.toy_avatar).into(holder.mImgAvatar)
-        }
-        when (content) {
-            is TextContent -> {
-                holder.mTvMessageText.text = content.text
+        if (latestMessage != null) {
+            val createTime = latestMessage.createTime
+            val content = latestMessage.content
+            holder!!.mTvTime.text = createTime.stamp2String(PATTERN_MOUNTH_DAY_HMS)
+            holder.mTvDestUserName.text = targetUserName
+            if (targetUserName != SampleUser.REIMU.userName) {
+                Glide.with(holder.mImgAvatar).load(R.mipmap.toy_pic).into(holder.mImgAvatar)
+            } else {
+                Glide.with(holder.mImgAvatar).load(R.mipmap.toy_avatar).into(holder.mImgAvatar)
             }
-            is ImageContent -> {
-                holder.mTvMessageText.text = "[图片]"
+            when (content) {
+                is TextContent -> {
+                    holder.mTvMessageText.text = content.text
+                }
+                is ImageContent -> {
+                    holder.mTvMessageText.text = "[图片]"
+                }
+                else -> holder.mTvMessageText.text = "[其他类型]"
             }
-            else -> holder.mTvMessageText.text = "[其他类型]"
         }
-        holder.itemView.setOnClickListener({
+        holder!!.itemView.setOnClickListener({
             PrivateChatActivity.start(holder.itemView.context, targetUserName)
         })
     }

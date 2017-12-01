@@ -10,13 +10,14 @@ import cn.jpush.im.android.api.enums.ContentType
 import cn.jpush.im.android.api.event.MessageEvent
 import com.suikajy.jiimdemo2.common.UserInfo
 import com.suikajy.jiimdemo2.common.startActivity
+import com.suikajy.jiimdemo2.common.toast
 import com.suikajy.jiimdemo2.module.conversationList.ConversationListActivity
 import com.suikajy.jiimdemo2.module.createSpecConversation.CreateSpecConversationActivity
+import com.suikajy.jiimdemo2.module.custom_private_chat.CustomChatActivity
 import com.suikajy.jiimdemo2.module.login.LoginActivity
 import com.suikajy.jiimdemo2.module.private_chat.PrivateChatActivity
 import com.suikajy.jiimdemo2.module.register.RegisterActivity
 import com.suikajy.jiimdemo2.module.signin.SignInActivity
-import com.suikajy.jiimdemo2.module.viewTest.ViewTestActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
 
@@ -47,13 +48,15 @@ class MainActivity : AppCompatActivity() {
         mBtnLogin.setOnClickListener({ startActivity(LoginActivity::class.java) })
         mBtnConversationList.setOnClickListener({ startActivity(ConversationListActivity::class.java) })
         mBtnCreateChat.setOnClickListener({ startActivity(CreateSpecConversationActivity::class.java) })
-        mBtnViewTest.setOnClickListener({ startActivity(ViewTestActivity::class.java) })
+        mBtnViewTest.setOnClickListener({ startActivity(TestActivity::class.java) })
+        mBtnCustomChat.setOnClickListener({ startActivity(CustomChatActivity::class.java) })
     }
 
     @SuppressLint("SetTextI18n")
     override fun onResume() {
         super.onResume()
         mTvCurrentUserName.text = getString(R.string.current_user) + UserInfo.userName
+        toast(UserInfo.userName)
     }
 
     /**
@@ -105,6 +108,8 @@ class MainActivity : AppCompatActivity() {
                 //群成员被踢事件
                 //群成员退群事件
                 //群信息变更事件
+            }
+            else -> {
             }
         }
     }
